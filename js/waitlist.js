@@ -1,3 +1,20 @@
+$.ajax({
+  type: 'GET',
+  url: 'https://89b4e45cfe85.ngrok.io/api/v1/iam/waitlist/8ca4401a-fddc-42fa-9f43-f6afbc75e7be/',
+  success: function(data)
+  {
+    var waitlist = data.waitlist_number;
+    $(".top-cols .waitlist-heading").text("#"+waitlist);
+    $(".top-cols-1 .waitlist-heading").text(data.share_score);
+    var eVerification = data.is_email_verified;
+    if(eVerification)
+      $(".waitlist-table-covering").attr("display","none");
+  },
+  error: function()
+  {
+    console.log("error loading API");
+  }
+});
 $(document).click(function()
 {
   $(".points-text-1").addClass("flicker");
